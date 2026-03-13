@@ -7,6 +7,7 @@ pipeline {
                 sh "sudo docker ps -aq | xargs -r sudo docker rm -f"
                 sh "sudo docker run -itd -p 80:80 --name Q1 httpd"
                 sh "sudo docker cp index.html Q1:/usr/local/apache2/htdocs/"
+                sh "sudo docker exec Q1 chmod 755 /usr/local/apache2/htdocs/index.html"
             }
         }
     }
